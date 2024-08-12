@@ -6,19 +6,21 @@ class DSU{
 	
 	public:
 		DSU(int n){
-			parent = new int[n];
+		    parent = new int[n];
 			rank = new int[n];
 			
 			for(int i=0;i < n;i++){
 				parent[i] = i;
+				cout<<parent[i]<<endl;
 				rank[i] = 0;
+				cout<<rank[i]<<endl;
 			}
 		}
 	int find(int node){
-		if (node == parent[node]){
+		if (node == parent[node])
 			return node;
-			return parent[node] = find(parent[node]);
-		}
+		return parent[node] = find(parent[node]);
+		
 	}
 	void Union(int u,int v){
 		u = find(u);
@@ -29,10 +31,12 @@ class DSU{
 				u = v;
 				v = temp;
 			}
-			parent[v] = u;
+			parent[v] = u;	
+		
 			if(rank[u] == rank[v])
 				rank[u]++;
 		}
+		
 	}
 };
 
